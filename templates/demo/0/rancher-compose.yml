@@ -21,3 +21,8 @@
       required: true
       type: string
 
+web:
+  scale: 2
+
+mysql:
+  scale: 2
