@@ -1,3 +1,23 @@
-catalog:
-  name: 
-  version: "v1.0.0"
+.catalog:
+  name: Sample
+  version: 1
+  description: Just a basic app
+  minimum_rancher_version: 1.0.0
+  questions:
+    - variable: MYSQL_USER
+      label: MySQL Username
+      description: The MySQL DB Username
+      required: true
+      default: app_user
+      type: string
+    - variable: MYSQL_PASSWORD
+      label: MySQL Password
+      description: The MySQL DB Password
+      required: true
+      type: password
+    - variable: MYSQL_VOLUME
+      label: MySQL Data Volume
+      description: The Docker volume that should be used to store MySQL data
+      required: true
+      type: string
+

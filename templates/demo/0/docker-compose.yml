@@ -1,17 +1,15 @@
-db:
-  image: mysql:latest
-  ports:
-    - "3306:3306"
-  environment:
-    - MYSQL_DATABASE=db
-    - MYSQL_USER=dbuser
-    - MYSQL_PASSWORD=mysql123
-    - MYSQL_ROOT_PASSWORD=mysql123
-
 web:
-  image: tutum/apache-php
-  ports:
-    - "80:80"
-    - "443:443"
+  image: willseward/tcu-resources-web:1
   links:
-    - db
+    - mysql
+mysql:
+  image: willseward/tcu-resources-mysql:1
+  environment:
+    MYSQL_RANDOM_ROOT_PASSWORD: "yes"
+    MYSQL_ONETIME_PASSWORD: "yes"
+    MYSQL_USER: "${MYSQL_USER}"
+    MYSQL_PASSWORD: "${MYSQL_PASSWORD}"
+    MYSQL_DATABASE: "my-test-database"
+  volumes:
+    - "${MYSQL_VOLUME}:/var/lib/mysql"
+
