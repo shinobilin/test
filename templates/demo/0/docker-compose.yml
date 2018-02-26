@@ -1,10 +1,9 @@
+version: "1"
 services:
   db:
     image: mysql:latest
     ports:
       - "3306:3306"
-    volumes:
-      - ./var/mysql:/var/lib/mysql
     environment:
       - MYSQL_DATABASE=db
       - MYSQL_USER=dbuser
@@ -18,5 +17,3 @@ services:
       - "443:443"
     links:
       - db
-    volumes:
-      - ./www:/app
