@@ -1,18 +1,17 @@
-services:
-  db:
-    image: mysql:latest
-    ports:
-      - "3306:3306"
-    environment:
-      - MYSQL_DATABASE=db
-      - MYSQL_USER=dbuser
-      - MYSQL_PASSWORD=mysql123
-      - MYSQL_ROOT_PASSWORD=mysql123
+db:
+  image: mysql:latest
+  ports:
+    - "3306:3306"
+  environment:
+    - MYSQL_DATABASE=db
+    - MYSQL_USER=dbuser
+    - MYSQL_PASSWORD=mysql123
+    - MYSQL_ROOT_PASSWORD=mysql123
 
-  web:
-    image: tutum/apache-php
-    ports:
-      - "80:80"
-      - "443:443"
-    links:
-      - db
+web:
+  image: tutum/apache-php
+  ports:
+    - "80:80"
+    - "443:443"
+  links:
+    - db
